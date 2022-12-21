@@ -64,30 +64,49 @@
 // console.log('State after dispatch: ', store.getState())
 // // log: {todos: [...], filters: {status, colors}, meaningOfLife: 42}
 
-//Example Middleware
+// //Example Middleware
+// import React from 'react'
+// import ReactDOM from 'react-dom'
+// import './index.css'
+// import App from './App'
+
+// import './api/server'
+
+// import store from './store'
+
+// store.dispatch({ type: 'todos/todoAdded', payload: 'Learn about actions' })
+// // log: '1'
+// // log: '2'
+// // log: '3'
+
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <App />
+//   </React.StrictMode>,
+//   document.getElementById('root')
+// )
+
+
+// store.dispatch({ type: 'todos/todoAdded', payload: 'Learn about actions' })
+// // log: '1'
+// // log: '2'
+// // log: '3'
+
+// Wrap up app with store provider
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
+import { Provider } from 'react-redux'
+
 import App from './App'
-
-import './api/server'
-
 import store from './store'
 
-store.dispatch({ type: 'todos/todoAdded', payload: 'Learn about actions' })
-// log: '1'
-// log: '2'
-// log: '3'
-
 ReactDOM.render(
+  // Render a `<Provider>` around the entire `<App>`,
+  // and pass the Redux store to as a prop
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 )
-
-
-store.dispatch({ type: 'todos/todoAdded', payload: 'Learn about actions' })
-// log: '1'
-// log: '2'
-// log: '3'
